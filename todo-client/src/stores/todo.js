@@ -59,8 +59,23 @@ export const useTodoStore = defineStore("todo", {
         console.error("Failed to toggle todo status:", error);
       }
     },
-    clearAll() {
-      this.todos = [];
+    async clearAll() {
+      try {
+        const response = await axios.get(`${API_BASE}/tasks`);
+        const tasks = Array.isArray(response.data)
+          ? response.data
+          : response.data
+          ? [response.data]
+          : [];
+
+        await Promise.all(tasks.map((task) => axios.delete(`${API_BASE}/tasks/${task.id}`)));
+
+        this.todos = [];
+        return { message: "success", deletedCount: tasks.length };
+      } catch (error) {
+        console.error("Failed to delete all todos:", error);
+        return null;
+      }
     },
   },
 });
