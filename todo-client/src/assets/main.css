@@ -75,6 +75,19 @@ textarea::-webkit-scrollbar {
 .input-field textarea:focus ~ .note-icon {
   color: #4070f4;
 }
+
+.uil {
+  font-style: normal;
+}
+
+.uil-notes::before {
+  content: "\270E";
+}
+
+.uil-trash::before {
+  content: "\1F5D1";
+}
+
 .container .todoLists {
   max-height: 380px;
   overflow-y: auto;

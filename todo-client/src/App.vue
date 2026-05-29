@@ -93,8 +93,6 @@ export default {
 </script>
 
 <style>
-@import "https://unicons.iconscout.com/release/v4.0.0/css/line.css";
-
 .tabs {
   margin: 20px 0;
 }
